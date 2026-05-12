@@ -206,14 +206,18 @@ export default function App() {
                 Cultivating Leaders Who Move Broward Forward
               </h2>
               <p className="text-slate-600 text-lg leading-relaxed mb-5">
-                The Broward Leadership Alliance is a nonpartisan, nonprofit organization
-                dedicated to identifying, developing, and connecting exceptional leaders across every sector
-                of Broward County life.
+                The Broward Leadership Alliance is a coalition of business leaders, community stakeholders,
+                and strategic partners dedicated to shaping the future of Broward County through economic
+                growth, innovation, and civic engagement. Through our Executive Vision and Industry Series
+                initiatives, we convene industry leaders, public officials, and key decision-makers to foster
+                collaboration on the issues impacting Broward's infrastructure, business climate, and
+                long-term livability.
               </p>
               <p className="text-slate-600 text-lg leading-relaxed mb-8">
-                We believe that a thriving community is built on informed, empathetic, and collaborative
-                leadership — and that those leaders can come from anywhere. Our work creates pathways for
-                diverse voices to rise, connect, and make a real difference.
+                Our mission is to position Broward County as a premier destination to live, work, and invest
+                by creating a direct pipeline between private-sector leadership and public policy discussions.
+                We believe Broward's future should be driven by practical solutions, economic opportunity,
+                and leadership that protects and expands opportunities for working families.
               </p>
               <a
                 href="mailto:info@browardleadership.com"
