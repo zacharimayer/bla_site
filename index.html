@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Broward Leadership Alliance</title>
+  <meta name="description" content="Uniting leaders, empowering communities, and shaping the future of Broward County." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0c2340;
+      --sky:  #1a6fa8;
+      --gold: #c9932a;
+      --gold-light: #e8b04b;
+      --white: #ffffff;
+      --gray: #f5f6f8;
+      --text: #1e293b;
+      --muted: #64748b;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--white);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 48px;
+      background: transparent;
+      transition: background 0.3s, padding 0.3s, box-shadow 0.3s;
+    }
+    nav.scrolled {
+      background: var(--white);
+      padding: 12px 48px;
+      box-shadow: 0 2px 16px rgba(0,0,0,.08);
+    }
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--white);
+      text-decoration: none;
+      line-height: 1.2;
+      transition: color 0.3s;
+    }
+    nav.scrolled .nav-brand { color: var(--navy); }
+    .nav-brand span { color: var(--gold-light); }
+    nav.scrolled .nav-brand span { color: var(--gold); }
+
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: rgba(255,255,255,.85);
+      transition: color 0.2s;
+    }
+    nav.scrolled .nav-links a { color: var(--text); }
+    .nav-links a:hover { color: var(--gold-light); }
+    nav.scrolled .nav-links a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    #hero img.bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    #hero .overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(12,35,64,.82), rgba(12,35,64,.92));
+    }
+    #hero .content {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+      padding: 0 24px;
+    }
+    .badge {
+      display: inline-block;
+      border: 1px solid rgba(201,147,42,.5);
+      background: rgba(201,147,42,.15);
+      color: #e8c06e;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 999px;
+      margin-bottom: 24px;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    h1 span { color: var(--gold-light); }
+    #hero p {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(255,255,255,.8);
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+    .btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 14px 32px;
+      border-radius: 999px;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-gold { background: var(--gold); color: var(--white); }
+    .btn-gold:hover { background: var(--gold-light); }
+    .btn-outline { border: 2px solid rgba(255,255,255,.5); color: var(--white); background: transparent; }
+    .btn-outline:hover { border-color: var(--white); }
+
+    /* ── STATS BAR ── */
+    #stats {
+      background: var(--navy);
+      padding: 48px 48px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--gold-light);
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.6);
+      margin-top: 4px;
+    }
+
+    /* ── SECTION BASE ── */
+    section { padding: 88px 48px; }
+    .section-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .lead {
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 600px;
+    }
+    .max-w { max-width: 1100px; margin: 0 auto; }
+
+    /* ── ABOUT ── */
+    #about { background: var(--white); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .about-img {
+      width: 100%; border-radius: 20px;
+      height: 420px; object-fit: cover;
+      box-shadow: 0 20px 60px rgba(0,0,0,.12);
+    }
+    .about-body p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 16px;
+      font-size: 1rem;
+    }
+
+    /* ── PROGRAMS ── */
+    #programs { background: var(--gray); }
+    .program-header { text-align: center; margin-bottom: 56px; }
+    .program-header .lead { margin: 0 auto; }
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .program-card {
+      background: var(--white);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .program-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,.1); }
+    .program-card img { width: 100%; height: 200px; object-fit: cover; }
+    .card-body { padding: 24px; }
+    .card-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .card-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .card-body p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── CTA ── */
+    #cta {
+      background: var(--sky);
+      text-align: center;
+      padding: 88px 48px;
+    }
+    #cta h2 { color: var(--white); }
+    #cta .lead { color: rgba(255,255,255,.8); margin: 0 auto 36px; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--navy); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .contact-info h2 { color: var(--white); }
+    .contact-info p { color: rgba(255,255,255,.65); line-height: 1.8; margin-bottom: 28px; }
+    .contact-detail {
+      display: flex; align-items: flex-start;
+      gap: 12px; margin-bottom: 14px;
+      color: rgba(255,255,255,.8);
+      font-size: 0.9rem;
+    }
+    .contact-detail svg { flex-shrink: 0; margin-top: 2px; }
+    .contact-form { display: flex; flex-direction: column; gap: 14px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 12px;
+      padding: 12px 16px;
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: rgba(255,255,255,.4); }
+    .contact-form input:focus,
+    .contact-form textarea:focus { border-color: var(--gold-light); }
+    .contact-form textarea { resize: none; }
+    .btn-form {
+      background: var(--gold);
+      color: var(--white);
+      border: none;
+      border-radius: 12px;
+      padding: 14px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-form:hover { background: var(--gold-light); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #070f1a;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,.35);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      nav.scrolled { padding: 12px 24px; }
+      .nav-links { display: none; }
+      section { padding: 64px 24px; }
+      #stats { grid-template-columns: repeat(2, 1fr); padding: 40px 24px; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-img { height: 280px; }
+      .programs-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="#hero" class="nav-brand">Broward<br><span>Leadership Alliance</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <img class="bg" src="https://images.pexels.com/photos/1098982/pexels-photo-1098982.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="" />
+    <div class="overlay"></div>
+    <div class="content">
+<h1>Leading Together.<br><span>Shaping Tomorrow.</span></h1>
+      <p>The Broward Leadership Alliance unites civic, business, and community leaders to build a more prosperous and connected Broward County.</p>
+      <div class="btn-row">
+        <a href="#about" class="btn btn-outline">Our Mission</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="max-w about-grid">
+      <img class="about-img" src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Leaders collaborating" />
+      <div class="about-body">
+        <div class="section-tag">Our Mission</div>
+        <h2>Cultivating Leaders Who Move Broward Forward</h2>
+        <p>The Broward Leadership Alliance is a nonpartisan, nonprofit organization dedicated to identifying, developing, and connecting exceptional leaders across every sector of Broward County life.</p>
+        <p>We believe a thriving community is built on informed, empathetic, and collaborative leadership — and that those leaders can come from anywhere. Our work creates pathways for diverse voices to rise, connect, and make a real difference.</p>
+        <a href="#contact" class="btn btn-gold" style="margin-top:12px;">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="max-w" style="text-align:center; max-width:560px;">
+      <div class="section-tag" style="color:var(--gold-light)">Contact Us</div>
+      <h2 style="color:var(--white);">Get in Touch</h2>
+      <p style="color:rgba(255,255,255,.65); line-height:1.8; margin-bottom:28px;">We welcome questions, partnership inquiries, and applications. Reach out and a member of our team will respond promptly.</p>
+      <a href="mailto:info@browardleadership.com" style="display:inline-flex;align-items:center;gap:10px;color:var(--gold-light);font-size:1.1rem;font-weight:600;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--gold-light)'">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        info@browardleadership.com
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    &copy; <span id="yr"></span> Broward Leadership Alliance. All rights reserved.
+  </footer>
+
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+  </script>
+
+</body>
+</html>
