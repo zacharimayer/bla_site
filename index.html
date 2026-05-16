@@ -192,51 +192,54 @@
     .max-w { max-width: 1100px; margin: 0 auto; }
 
     /* ── ABOUT US (leadership) ── */
-    #about-us { background: var(--white); padding: 0; }
-    .about-us-grid {
+    #about-us { background: var(--white); padding: 80px 24px; }
+    .about-us-header { text-align: center; margin-bottom: 56px; }
+    .about-us-header .section-tag { margin-bottom: 8px; }
+    .about-us-header h2 { font-size: clamp(2.2rem, 3.5vw, 3rem); margin-bottom: 12px; }
+    .gold-rule { width: 48px; height: 4px; background: var(--gold); border-radius: 4px; margin: 0 auto 24px; }
+    .about-us-header p { color: var(--muted); line-height: 1.8; font-size: 1rem; max-width: 640px; margin: 0 auto; }
+    .leaders-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      min-height: 600px;
+      gap: 40px;
+      max-width: 860px;
+      margin: 0 auto;
     }
-    .about-us-text {
-      padding: 80px 64px 80px 48px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .about-us-text .section-tag { margin-bottom: 6px; }
-    .about-us-text h2 { font-size: clamp(2.2rem, 3.5vw, 3rem); margin-bottom: 10px; }
-    .gold-rule { width: 48px; height: 4px; background: var(--gold); border-radius: 4px; margin-bottom: 24px; }
-    .about-us-text p { color: var(--muted); line-height: 1.8; margin-bottom: 16px; font-size: 1rem; }
-    .leader-block {
-      border-left: 4px solid var(--gold);
-      padding-left: 20px;
-      margin-top: 12px;
-    }
-    .leader-block h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--navy);
-      text-transform: uppercase;
-      letter-spacing: .03em;
-      margin-bottom: 12px;
-      line-height: 1.3;
-    }
-    .leader-block p { font-size: 0.95rem; color: var(--muted); line-height: 1.75; margin: 0; }
-    .about-us-photo {
-      position: relative;
+    .leader-card {
+      background: #f8fafc;
+      border-radius: 20px;
       overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,.07);
+      transition: box-shadow .25s, transform .25s;
     }
-    .about-us-photo .city-bg {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
+    .leader-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,.13); transform: translateY(-4px); }
+    .leader-card img {
+      width: 100%;
+      height: 380px;
       object-fit: cover;
       object-position: center top;
+      display: block;
     }
-    .about-us-photo .city-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to bottom, rgba(12,35,64,.08) 0%, transparent 40%);
+    .leader-card-body { padding: 28px 28px 32px; }
+    .leader-card-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .leader-card-body .role {
+      color: var(--gold);
+      font-weight: 600;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 14px;
+    }
+    .leader-card-body p { color: var(--muted); font-size: 0.92rem; line-height: 1.75; margin: 0; }
+    @media (max-width: 640px) {
+      .leaders-grid { grid-template-columns: 1fr; }
+      .leader-card img { height: 300px; }
     }
 
     /* ── OUR MISSION STRIPE ── */
@@ -545,23 +548,30 @@
 
   <!-- ABOUT US - Leadership -->
   <section id="about-us">
-    <div class="about-us-grid max-w" style="max-width:100%;">
-      <!-- Text side -->
-      <div class="about-us-text">
+    <div class="max-w">
+      <div class="about-us-header">
         <div class="section-tag">Executive Vision Series</div>
         <h2>About Us</h2>
         <div class="gold-rule"></div>
-        <p>The Broward Leadership Alliance is a community of executives and a Political Committee.</p>
-        <p>We are led by seasoned political operatives and community builders who share a commitment to smart growth, strong infrastructure, and a better quality of life for all who live, work, and invest in Broward County.</p>
-        <div class="leader-block">
-          <h3>Led by Anthony Paz, MA<br>and Ari Goldman, MPA</h3>
-          <p>Anthony Paz, MA, and Ari Goldman, MPA, are seasoned political operatives and community builders with years of experience in campaign management, economic development and international diplomacy. Together, they combine deep strategic expertise with a shared passion for effective leadership and stronger communities. Their mission is to build a modern, functional Broward County through principled leadership, smart policy solutions, and a relentless focus on results.</p>
-        </div>
+        <p>The Broward Leadership Alliance is a community of executives and a Political Committee, led by seasoned political operatives and community builders committed to smart growth, strong infrastructure, and a better quality of life for all who live, work, and invest in Broward County.</p>
       </div>
-      <!-- Photo side -->
-      <div class="about-us-photo">
-        <img class="city-bg" src="/leaders-skyline.jpeg" alt="Anthony Paz and Ari Goldman" />
-        <div class="city-overlay"></div>
+      <div class="leaders-grid">
+        <div class="leader-card">
+          <img src="/photo_2026-05-16_10.32.46.jpeg" alt="Anthony Paz" />
+          <div class="leader-card-body">
+            <h3>Anthony Paz, MA</h3>
+            <div class="role">Co-Founder</div>
+            <p>A seasoned political operative and community builder with years of experience in campaign management, economic development, and international diplomacy. Anthony brings deep strategic expertise and a passion for principled leadership that puts Broward's future first.</p>
+          </div>
+        </div>
+        <div class="leader-card">
+          <img src="/photo_2026-05-16_10.31.43.jpeg" alt="Ari Goldman" />
+          <div class="leader-card-body">
+            <h3>Ari Goldman, MPA</h3>
+            <div class="role">Co-Founder</div>
+            <p>A public policy professional and community builder with a strong track record in civic engagement and smart governance. Ari is committed to building a modern, functional Broward County through smart policy solutions and a relentless focus on results.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
