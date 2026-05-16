@@ -12,10 +12,14 @@ import {
   Handshake,
   Lightbulb,
   TrendingUp,
+  Megaphone,
+  Target,
+  Search,
 } from 'lucide-react';
 
 const NAV_LINKS = [
   { label: 'Mission', href: '#mission' },
+  { label: 'About', href: '#about' },
   { label: 'Leadership', href: '#leadership' },
   { label: 'Get Involved', href: '#involved' },
   { label: 'Contact', href: '#footer' },
@@ -241,6 +245,145 @@ export default function App() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── ABOUT US ── */}
+      <section id="about" className="py-0 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-0 items-stretch">
+            {/* Left: text */}
+            <div className="py-20 pr-0 lg:pr-16 flex flex-col justify-center">
+              <span className="text-amber-500 font-semibold text-sm uppercase tracking-widest mb-2">Executive Vision Series</span>
+              <h2 className="font-playfair text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">
+                About Us
+              </h2>
+              <div className="w-12 h-1 bg-amber-500 mb-6 rounded-full" />
+              <p className="text-slate-600 text-lg leading-relaxed mb-5">
+                The Broward Leadership Alliance is a community of executives and a Political Committee.
+              </p>
+              <p className="text-slate-600 text-lg leading-relaxed mb-10">
+                We are led by seasoned political operatives and community builders who share a commitment to
+                smart growth, strong infrastructure, and a better quality of life for all who live, work,
+                and invest in Broward County.
+              </p>
+
+              <div className="border-l-4 border-amber-500 pl-6 mb-8">
+                <h3 className="font-playfair text-2xl font-bold text-slate-900 mb-3 uppercase tracking-tight">
+                  Led by Anthony Paz, MA<br />and Ari Goldman, MPA
+                </h3>
+                <p className="text-slate-600 leading-relaxed">
+                  Anthony Paz, MA, and Ari Goldman, MPA, are seasoned political operatives and community
+                  builders with years of experience in campaign management, economic development and
+                  international diplomacy. Together, they combine deep strategic expertise with a shared
+                  passion for effective leadership and stronger communities. Their mission is to build a
+                  modern, functional Broward County through principled leadership, smart policy solutions,
+                  and a relentless focus on results.
+                </p>
+              </div>
+            </div>
+
+            {/* Right: photo with cityscape overlay */}
+            <div className="relative min-h-[520px] lg:min-h-0">
+              {/* Broward skyline background */}
+              <img
+                src="https://images.pexels.com/photos/1619317/pexels-photo-1619317.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                alt="Broward County skyline"
+                className="absolute inset-0 w-full h-full object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-sky-950/60 via-sky-900/20 to-transparent" />
+              {/* Leadership photo pinned to bottom */}
+              <div className="absolute bottom-0 left-0 right-0 flex justify-center items-end">
+                <img
+                  src="https://images.pexels.com/photos/3184405/pexels-photo-3184405.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="Anthony Paz and Ari Goldman"
+                  className="w-full max-w-sm object-cover object-top"
+                  style={{ maxHeight: '420px' }}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── OUR MISSION BANNER ── */}
+      <section className="bg-slate-50 py-16 border-y border-slate-100">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="flex-1 h-px bg-slate-200" />
+            <Star size={18} className="text-amber-500 fill-amber-500 shrink-0" />
+            <div className="flex-1 h-px bg-slate-200" />
+          </div>
+          <h3 className="font-playfair text-2xl md:text-3xl font-bold text-slate-900 uppercase tracking-wide mb-5">
+            Our Mission
+          </h3>
+          <p className="text-slate-600 text-lg leading-relaxed max-w-3xl mx-auto">
+            To make Broward a modern and functional county. We challenge the progressive establishment in
+            Broward in favor of competent government and foster a safe environment to grow businesses,
+            create jobs, and improve the quality of life for all residents.
+          </p>
+        </div>
+      </section>
+
+      {/* ── WHAT WE DO ── */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex items-center gap-4 mb-12">
+            <div className="flex-1 h-px bg-slate-200" />
+            <h3 className="font-playfair text-2xl md:text-3xl font-bold text-slate-900 uppercase tracking-wide whitespace-nowrap">
+              What We Do
+            </h3>
+            <div className="flex-1 h-px bg-slate-200" />
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+            {[
+              {
+                icon: Users,
+                title: 'Build Community',
+                desc: 'We bring together executives, business leaders, and community stakeholders to collaborate on solutions that move Broward forward.',
+              },
+              {
+                icon: Search,
+                title: 'Find & Highlight Leaders',
+                desc: 'We identify and support candidates who share our vision for a stronger, safer, and more prosperous Broward County.',
+              },
+              {
+                icon: Megaphone,
+                title: 'Drive Impact',
+                desc: 'Through advocacy, engagement, and strategic action, we promote policies that deliver results and put residents first.',
+              },
+              {
+                icon: Award,
+                title: 'Champion Competent Government',
+                desc: 'We advocate for accountable leadership, efficient services, and fiscal responsibility to strengthen our communities.',
+              },
+            ].map((item) => (
+              <div key={item.title} className="flex flex-col items-center">
+                <div className="w-16 h-16 rounded-full border-2 border-amber-500 flex items-center justify-center mb-4 group-hover:bg-amber-50 transition-colors">
+                  <item.icon size={28} className="text-amber-600" />
+                </div>
+                <h4 className="font-bold text-slate-900 uppercase tracking-wide text-sm mb-3">{item.title}</h4>
+                <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── OUR GOAL BANNER ── */}
+      <section className="bg-sky-950 py-10">
+        <div className="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-center gap-6">
+          <div className="w-16 h-16 rounded-full border-2 border-amber-500 flex items-center justify-center shrink-0">
+            <Target size={30} className="text-amber-500" />
+          </div>
+          <div className="sm:border-l sm:border-amber-500/40 sm:pl-6">
+            <h4 className="font-bold text-amber-400 uppercase tracking-widest text-sm mb-2">Our Goal</h4>
+            <p className="text-slate-200 text-lg leading-relaxed">
+              To foster collaboration, share actionable insights, and identify solutions that drive
+              sustainable growth and high-quality development across Broward County.
+            </p>
           </div>
         </div>
       </section>
