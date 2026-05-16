@@ -191,7 +191,194 @@
     }
     .max-w { max-width: 1100px; margin: 0 auto; }
 
-    /* ── ABOUT ── */
+    /* ── ABOUT US (leadership) ── */
+    #about-us { background: var(--white); padding: 0; }
+    .about-us-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 600px;
+    }
+    .about-us-text {
+      padding: 80px 64px 80px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .about-us-text .section-tag { margin-bottom: 6px; }
+    .about-us-text h2 { font-size: clamp(2.2rem, 3.5vw, 3rem); margin-bottom: 10px; }
+    .gold-rule { width: 48px; height: 4px; background: var(--gold); border-radius: 4px; margin-bottom: 24px; }
+    .about-us-text p { color: var(--muted); line-height: 1.8; margin-bottom: 16px; font-size: 1rem; }
+    .leader-block {
+      border-left: 4px solid var(--gold);
+      padding-left: 20px;
+      margin-top: 12px;
+    }
+    .leader-block h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: .03em;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .leader-block p { font-size: 0.95rem; color: var(--muted); line-height: 1.75; margin: 0; }
+    .about-us-photo {
+      position: relative;
+      overflow: hidden;
+    }
+    .about-us-photo .city-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .about-us-photo .city-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(12,35,64,.55) 0%, rgba(12,35,64,.15) 60%, transparent 100%);
+    }
+    .about-us-photo .leaders-img {
+      position: absolute;
+      bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 90%;
+      max-width: 420px;
+      object-fit: cover;
+      object-position: top;
+      max-height: 480px;
+    }
+
+    /* ── OUR MISSION STRIPE ── */
+    #mission-stripe {
+      background: var(--gray);
+      padding: 60px 48px;
+      border-top: 1px solid #e5e7eb;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .mission-stripe-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .divider-star {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .divider-star::before,
+    .divider-star::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #d1d5db;
+    }
+    .divider-star span {
+      color: var(--gold);
+      font-size: 1.1rem;
+    }
+    #mission-stripe h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 16px;
+    }
+    #mission-stripe p { color: var(--muted); line-height: 1.8; font-size: 1.05rem; }
+
+    /* ── WHAT WE DO ── */
+    #what-we-do { background: var(--white); padding: 80px 48px; }
+    .what-divider {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 56px;
+    }
+    .what-divider::before,
+    .what-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #e5e7eb;
+    }
+    .what-divider h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      white-space: nowrap;
+    }
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 36px;
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .pillar-icon {
+      width: 64px; height: 64px;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .pillar-icon svg { color: var(--gold); }
+    .pillar h4 {
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .pillar p { font-size: 0.875rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── OUR GOAL BANNER ── */
+    #our-goal {
+      background: #0c2340;
+      padding: 40px 48px;
+    }
+    .goal-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .goal-icon {
+      width: 64px; height: 64px;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .goal-icon svg { color: var(--gold); }
+    .goal-divider {
+      width: 1px;
+      height: 56px;
+      background: rgba(201,147,42,.4);
+      flex-shrink: 0;
+    }
+    .goal-text h4 {
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 6px;
+    }
+    .goal-text p { color: rgba(255,255,255,.85); line-height: 1.7; font-size: 1rem; }
+
+    /* ── ABOUT (old mission section) ── */
     #about { background: var(--white); }
     .about-grid {
       display: grid;
@@ -325,6 +512,18 @@
       .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
       .about-img { height: 280px; }
       .programs-grid { grid-template-columns: 1fr; }
+      .about-us-grid { grid-template-columns: 1fr; }
+      .about-us-photo { min-height: 380px; }
+      .about-us-text { padding: 56px 24px; }
+      .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+      #what-we-do { padding: 64px 24px; }
+      #mission-stripe { padding: 48px 24px; }
+      #our-goal { padding: 32px 24px; }
+      .goal-inner { flex-direction: column; text-align: center; }
+      .goal-divider { width: 80px; height: 1px; }
+    }
+    @media (max-width: 560px) {
+      .pillars-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -352,6 +551,88 @@
     </div>
   </section>
 
+
+  <!-- ABOUT US - Leadership -->
+  <section id="about-us">
+    <div class="about-us-grid max-w" style="max-width:100%;">
+      <!-- Text side -->
+      <div class="about-us-text">
+        <div class="section-tag">Executive Vision Series</div>
+        <h2>About Us</h2>
+        <div class="gold-rule"></div>
+        <p>The Broward Leadership Alliance is a community of executives and a Political Committee.</p>
+        <p>We are led by seasoned political operatives and community builders who share a commitment to smart growth, strong infrastructure, and a better quality of life for all who live, work, and invest in Broward County.</p>
+        <div class="leader-block">
+          <h3>Led by Anthony Paz, MA<br>and Ari Goldman, MPA</h3>
+          <p>Anthony Paz, MA, and Ari Goldman, MPA, are seasoned political operatives and community builders with years of experience in campaign management, economic development and international diplomacy. Together, they combine deep strategic expertise with a shared passion for effective leadership and stronger communities. Their mission is to build a modern, functional Broward County through principled leadership, smart policy solutions, and a relentless focus on results.</p>
+        </div>
+      </div>
+      <!-- Photo side -->
+      <div class="about-us-photo">
+        <img class="city-bg" src="https://images.pexels.com/photos/1619317/pexels-photo-1619317.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Broward County skyline" />
+        <div class="city-overlay"></div>
+        <img class="leaders-img" src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Business leaders" />
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR MISSION STRIPE -->
+  <section id="mission-stripe">
+    <div class="mission-stripe-inner">
+      <div class="divider-star"><span>&#9733;</span></div>
+      <h3>Our Mission</h3>
+      <p>To make Broward a modern and functional county. We challenge the progressive establishment in Broward in favor of competent government and foster a safe environment to grow businesses, create jobs, and improve the quality of life for all residents.</p>
+    </div>
+  </section>
+
+  <!-- WHAT WE DO -->
+  <section id="what-we-do">
+    <div class="what-divider max-w"><h3>What We Do</h3></div>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <div class="pillar-icon">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h4>Build Community</h4>
+        <p>We bring together executives, business leaders, and community stakeholders to collaborate on solutions that move Broward forward.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+        </div>
+        <h4>Find &amp; Highlight Leaders</h4>
+        <p>We identify and support candidates who share our vision for a stronger, safer, and more prosperous Broward County.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        </div>
+        <h4>Drive Impact</h4>
+        <p>Through advocacy, engagement, and strategic action, we promote policies that deliver results and put residents first.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <h4>Champion Competent Government</h4>
+        <p>We advocate for accountable leadership, efficient services, and fiscal responsibility to strengthen our communities.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR GOAL -->
+  <section id="our-goal">
+    <div class="goal-inner">
+      <div class="goal-icon">
+        <svg width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/><line x1="22" y1="12" x2="18" y2="12"/><line x1="6" y1="12" x2="2" y2="12"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/></svg>
+      </div>
+      <div class="goal-divider"></div>
+      <div class="goal-text">
+        <h4>Our Goal</h4>
+        <p>To foster collaboration, share actionable insights, and identify solutions that drive sustainable growth and high-quality development across Broward County.</p>
+      </div>
+    </div>
+  </section>
 
   <!-- ABOUT -->
   <section id="about">
