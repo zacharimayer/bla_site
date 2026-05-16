@@ -235,23 +235,31 @@ export default function App() {
               </div>
             </div>
 
-            {/* Right: photo with cityscape overlay */}
-            <div className="relative min-h-[520px] lg:min-h-0">
-              {/* Broward skyline background */}
-              <img
-                src="https://images.pexels.com/photos/1619317/pexels-photo-1619317.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                alt="Broward County skyline"
-                className="absolute inset-0 w-full h-full object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-sky-950/60 via-sky-900/20 to-transparent" />
-              {/* Leadership photo pinned to bottom */}
-              <div className="absolute bottom-0 left-0 right-0 flex justify-center items-end">
+            {/* Right: two portrait photos */}
+            <div className="grid grid-cols-2 gap-4 py-12 lg:py-20 pl-0 lg:pl-4 items-end">
+              <div className="flex flex-col gap-3">
                 <img
-                  src="https://images.pexels.com/photos/3184405/pexels-photo-3184405.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  alt="Anthony Paz and Ari Goldman"
-                  className="w-full max-w-sm object-cover object-top"
-                  style={{ maxHeight: '420px' }}
+                  src="/photo_2026-05-16_10.32.46.jpeg"
+                  alt="Anthony Paz"
+                  className="w-full rounded-2xl object-cover object-top shadow-xl"
+                  style={{ aspectRatio: '1/1' }}
                 />
+                <div className="text-center">
+                  <p className="font-semibold text-slate-900 text-sm">Anthony Paz, MA</p>
+                  <p className="text-slate-500 text-xs">Co-Founder</p>
+                </div>
+              </div>
+              <div className="flex flex-col gap-3 mt-8">
+                <img
+                  src="/photo_2026-05-16_10.31.43.jpeg"
+                  alt="Ari Goldman"
+                  className="w-full rounded-2xl object-cover object-top shadow-xl"
+                  style={{ aspectRatio: '1/1' }}
+                />
+                <div className="text-center">
+                  <p className="font-semibold text-slate-900 text-sm">Ari Goldman, MPA</p>
+                  <p className="text-slate-500 text-xs">Co-Founder</p>
+                </div>
               </div>
             </div>
           </div>
