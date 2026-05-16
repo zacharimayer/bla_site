@@ -200,55 +200,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* ── MISSION ── */}
-      <section id="mission" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <span className="text-amber-500 font-semibold text-sm uppercase tracking-widest">Our Mission</span>
-              <h2 className="font-playfair text-4xl md:text-5xl font-bold text-slate-900 mt-3 mb-6 leading-tight">
-                Cultivating Leaders Who Move Broward Forward
-              </h2>
-              <p className="text-slate-600 text-lg leading-relaxed mb-5">
-                The Broward Leadership Alliance is a coalition of business leaders, community stakeholders,
-                and strategic partners dedicated to shaping the future of Broward County through economic
-                growth, innovation, and civic engagement. Through our Executive Vision and Industry Series
-                initiatives, we convene industry leaders, public officials, and key decision-makers to foster
-                collaboration on the issues impacting Broward's infrastructure, business climate, and
-                long-term livability.
-              </p>
-              <p className="text-slate-600 text-lg leading-relaxed mb-8">
-                Our mission is to position Broward County as a premier destination to live, work, and invest
-                by creating a direct pipeline between private-sector leadership and public policy discussions.
-                We believe Broward's future should be driven by practical solutions, economic opportunity,
-                and leadership that protects and expands opportunities for working families.
-              </p>
-              <a
-                href="mailto:info@browardleadership.com"
-                className="inline-flex items-center gap-2 text-sky-700 font-semibold hover:text-amber-500 transition-colors group"
-              >
-                Get in touch <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </a>
-            </div>
-
-            <div className="grid grid-cols-2 gap-5">
-              {PILLARS.map((p) => (
-                <div
-                  key={p.title}
-                  className="bg-slate-50 hover:bg-sky-50 border border-slate-100 hover:border-sky-200 rounded-2xl p-6 transition-all group"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-sky-100 group-hover:bg-sky-700 flex items-center justify-center mb-4 transition-colors">
-                    <p.icon size={20} className="text-sky-700 group-hover:text-white transition-colors" />
-                  </div>
-                  <h3 className="font-semibold text-slate-800 mb-2">{p.title}</h3>
-                  <p className="text-slate-500 text-sm leading-relaxed">{p.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ── ABOUT US ── */}
       <section id="about" className="py-0 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
