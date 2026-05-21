@@ -271,6 +271,35 @@
     .gold-rule { width: 48px; height: 4px; background: var(--gold); border-radius: 4px; margin: 0 auto 24px; }
     .about-us-header p { color: var(--muted); line-height: 1.8; font-size: 1rem; max-width: 640px; margin: 0 auto; }
 
+    /* ── LEADERSHIP BIOS ── */
+    .leaders-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .leader-card {
+      background: #f8fafc;
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 4px 24px rgba(0,0,0,.07);
+      transition: box-shadow .25s, transform .25s;
+    }
+    .leader-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,.13); transform: translateY(-4px); }
+    .leader-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 14px;
+    }
+    .leader-card p { color: var(--muted); font-size: 0.92rem; line-height: 1.75; margin: 0; }
+
+    @media (max-width: 900px) {
+      .leaders-grid { grid-template-columns: 1fr; max-width: 480px; }
+    }
+
     /* ── OUR MISSION STRIPE ── */
     #mission-stripe {
       background: var(--gray);
@@ -525,6 +554,16 @@
         <h2>About Us</h2>
         <div class="gold-rule"></div>
         <p>The Broward Leadership Alliance (BLA) is a Political Action Committee (PAC) dedicated to advancing policies and supporting leaders who are committed to Broward County's long-term success. We bring together business leaders, entrepreneurs, community stakeholders, and public officials to strengthen collaboration between the private and public sectors. Through advocacy, civic engagement, and strategic partnerships, BLA works to promote economic growth, improve infrastructure, and encourage more efficient government. Our mission is to help make Broward County a better place to live, work, and invest.</p>
+      </div>
+      <div class="leaders-grid">
+        <div class="leader-card">
+          <h3>Anthony Paz, MA</h3>
+          <p>Anthony Paz is the Founder of AXIOS Strategies. He has served on multiple county, state, and federal campaigns under official capacities as a Field Director, Senior Advisor, and Campaign Manager; leading efforts in compliance, targeted voter outreach, fundraising, and full-scale field operations. Anthony is a graduate of the Leadership Institute's Campaign Management and Fundraising School in Washington, D.C. He holds a Master's degree in Theology with a minor in Political Science from Florida International University, with a specialization in Asian and Latin American relations.</p>
+        </div>
+        <div class="leader-card">
+          <h3>Ari Goldman, MPA</h3>
+          <p>With over a decade of experience in consulting, Ari's expertise is based in research, analysis and strategy. He has worked with dozens of clients on everything from local political campaigns to international diplomacy. He believes that success cannot be accomplished without clear step by step game plans. Serious clients deserve serious consultants.</p>
+        </div>
       </div>
     </div>
   </section>
