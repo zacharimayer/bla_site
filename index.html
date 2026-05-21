@@ -7,9 +7,629 @@
   <meta name="description" content="Uniting leaders, empowering communities, and shaping the future of Broward County." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0c2340;
+      --sky:  #1a6fa8;
+      --gold: #c9932a;
+      --gold-light: #e8b04b;
+      --white: #ffffff;
+      --gray: #f5f6f8;
+      --text: #1e293b;
+      --muted: #64748b;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--white);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 48px;
+      background: transparent;
+      transition: background 0.3s, padding 0.3s, box-shadow 0.3s;
+    }
+    nav.scrolled {
+      background: var(--white);
+      padding: 12px 48px;
+      box-shadow: 0 2px 16px rgba(0,0,0,.08);
+    }
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--white);
+      text-decoration: none;
+      line-height: 1.2;
+      transition: color 0.3s;
+    }
+    nav.scrolled .nav-brand { color: var(--navy); }
+    .nav-brand span { color: var(--gold-light); }
+    nav.scrolled .nav-brand span { color: var(--gold); }
+
+    .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: rgba(255,255,255,.85);
+      transition: color 0.2s;
+    }
+    nav.scrolled .nav-links a { color: var(--text); }
+    .nav-links a:hover { color: var(--gold-light); }
+    nav.scrolled .nav-links a:hover { color: var(--gold); }
+    .nav-donate {
+      background: var(--gold);
+      color: var(--navy) !important;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-weight: 700 !important;
+      font-size: 0.875rem;
+      transition: background 0.2s, color 0.2s !important;
+    }
+    .nav-donate:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+    nav.scrolled .nav-donate { background: var(--gold); color: var(--navy) !important; }
+    nav.scrolled .nav-donate:hover { background: var(--gold-light) !important; }
+
+    /* Hamburger */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      z-index: 110;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: background 0.3s, transform 0.3s, opacity 0.3s;
+    }
+    nav.scrolled .nav-hamburger span { background: var(--navy); }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile drawer */
+    .nav-mobile-drawer {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: var(--navy);
+      padding: 80px 32px 40px;
+      z-index: 99;
+      flex-direction: column;
+      gap: 0;
+      box-shadow: 0 8px 32px rgba(0,0,0,.3);
+    }
+    .nav-mobile-drawer.open { display: flex; }
+    .nav-mobile-drawer a {
+      display: block;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: rgba(255,255,255,.85);
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      transition: color 0.2s;
+    }
+    .nav-mobile-drawer a:last-child { border-bottom: none; }
+    .nav-mobile-drawer a:hover { color: var(--gold-light); }
+    .nav-mobile-drawer .drawer-donate {
+      margin-top: 24px;
+      background: var(--gold);
+      color: var(--navy) !important;
+      border-radius: 8px;
+      text-align: center;
+      padding: 14px 20px;
+      font-weight: 700;
+      border-bottom: none !important;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    #hero img.bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    #hero .overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(12,35,64,.82), rgba(12,35,64,.92));
+    }
+    #hero .content {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+      padding: 0 24px;
+    }
+    .badge {
+      display: inline-block;
+      border: 1px solid rgba(201,147,42,.5);
+      background: rgba(201,147,42,.15);
+      color: #e8c06e;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 999px;
+      margin-bottom: 24px;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 8vw, 4.5rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    h1 span { color: var(--gold-light); }
+    #hero p {
+      font-size: clamp(1rem, 3.5vw, 1.2rem);
+      color: rgba(255,255,255,.8);
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+    .btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 14px 32px;
+      border-radius: 999px;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-gold { background: var(--gold); color: var(--white); }
+    .btn-gold:hover { background: var(--gold-light); }
+    .btn-outline { border: 2px solid rgba(255,255,255,.5); color: var(--white); background: transparent; }
+    .btn-outline:hover { border-color: var(--white); }
+
+    /* ── STATS BAR ── */
+    #stats {
+      background: var(--navy);
+      padding: 48px 48px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--gold-light);
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.6);
+      margin-top: 4px;
+    }
+
+    /* ── SECTION BASE ── */
+    section { padding: 88px 48px; }
+    .section-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .lead {
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 600px;
+    }
+    .max-w { max-width: 1100px; margin: 0 auto; }
+
+    /* ── ABOUT US ── */
+    #about-us { background: var(--white); padding: 80px 24px; }
+    .about-us-header { text-align: center; margin-bottom: 56px; }
+    .about-us-header .section-tag { margin-bottom: 8px; }
+    .about-us-header h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 12px; }
+    .gold-rule { width: 48px; height: 4px; background: var(--gold); border-radius: 4px; margin: 0 auto 24px; }
+    .about-us-header p { color: var(--muted); line-height: 1.8; font-size: 1rem; max-width: 640px; margin: 0 auto; }
+
+    /* ── OUR MISSION STRIPE ── */
+    #mission-stripe {
+      background: var(--gray);
+      padding: 60px 48px;
+      border-top: 1px solid #e5e7eb;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .mission-stripe-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .divider-star {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .divider-star::before,
+    .divider-star::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #d1d5db;
+    }
+    .divider-star span {
+      color: var(--gold);
+      font-size: 1.1rem;
+    }
+    #mission-stripe h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.3rem, 4vw, 1.6rem);
+      font-weight: 700;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 16px;
+    }
+    #mission-stripe p { color: var(--muted); line-height: 1.8; font-size: clamp(0.95rem, 2.5vw, 1.05rem); }
+
+    /* ── WHAT WE DO ── */
+    #what-we-do { background: var(--white); padding: 80px 48px; }
+    .what-divider {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 56px;
+    }
+    .what-divider::before,
+    .what-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #e5e7eb;
+    }
+    .what-divider h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.2rem, 3.5vw, 1.6rem);
+      font-weight: 700;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      white-space: nowrap;
+    }
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 36px;
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .pillar-icon {
+      width: 64px; height: 64px;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .pillar-icon svg { color: var(--gold); }
+    .pillar h4 {
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .pillar p { font-size: 0.875rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── OUR GOAL BANNER ── */
+    #our-goal {
+      background: #0c2340;
+      padding: 40px 48px;
+    }
+    .goal-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .goal-icon {
+      width: 64px; height: 64px;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .goal-icon svg { color: var(--gold); }
+    .goal-divider {
+      width: 1px;
+      height: 56px;
+      background: rgba(201,147,42,.4);
+      flex-shrink: 0;
+    }
+    .goal-text h4 {
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 6px;
+    }
+    .goal-text p { color: rgba(255,255,255,.85); line-height: 1.7; font-size: 1rem; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--navy); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .contact-info h2 { color: var(--white); }
+    .contact-info p { color: rgba(255,255,255,.65); line-height: 1.8; margin-bottom: 28px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #070f1a;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,.35);
+    }
+
+    /* ── RESPONSIVE: TABLET (≤900px) ── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      nav.scrolled { padding: 12px 24px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+
+      section { padding: 64px 24px; }
+      #about-us { padding: 64px 20px; }
+      #stats {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 40px 24px;
+        gap: 32px;
+      }
+      .stat-num { font-size: 2rem; }
+      .pillars-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+      #what-we-do { padding: 64px 24px; }
+      #mission-stripe { padding: 48px 24px; }
+      #our-goal { padding: 32px 24px; }
+      .goal-inner { flex-direction: column; text-align: center; }
+      .goal-divider { width: 80px; height: 1px; }
+    }
+
+    /* ── RESPONSIVE: MOBILE (≤560px) ── */
+    @media (max-width: 560px) {
+      nav { padding: 14px 20px; }
+      nav.scrolled { padding: 10px 20px; }
+
+      #hero .content { padding: 0 20px; }
+      #hero p { font-size: 1rem; margin-bottom: 28px; }
+      .btn { padding: 13px 28px; font-size: 0.9rem; }
+
+      #stats {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 32px 20px;
+        gap: 24px;
+      }
+      .stat-num { font-size: 1.8rem; }
+      .stat-label { font-size: 0.72rem; }
+
+      section { padding: 52px 20px; }
+      #about-us { padding: 52px 16px; }
+      .about-us-header { margin-bottom: 36px; }
+      .about-us-header p { font-size: 0.95rem; }
+
+      #mission-stripe { padding: 40px 20px; }
+      #what-we-do { padding: 52px 20px; }
+      .what-divider { margin-bottom: 36px; gap: 12px; }
+      .pillars-grid { grid-template-columns: 1fr; gap: 24px; }
+      .pillar-icon { width: 56px; height: 56px; }
+
+      #our-goal { padding: 28px 20px; }
+      .goal-icon { width: 52px; height: 52px; }
+      .goal-text p { font-size: 0.95rem; }
+
+      #contact { padding: 52px 20px; }
+      .contact-email-link { font-size: 0.95rem !important; }
+
+      footer { padding: 16px 20px; font-size: 0.75rem; }
+    }
+  </style>
 </head>
 <body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.tsx"></script>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="#hero" class="nav-brand">Broward<br><span>Leadership Alliance</span></a>
+    <ul class="nav-links">
+      <li><a href="#about-us">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="https://secure.anedot.com/broward-leadership-alliance/90d8cfa6-4d5d-4dfe-9a46-b0aeae4d1f7e?utm_source=anedot&utm_medium=qr_code&utm_campaign=browardleadership" target="_blank" rel="noopener noreferrer" class="nav-donate">Donate</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE DRAWER -->
+  <div class="nav-mobile-drawer" id="mobileDrawer">
+    <a href="#about-us" class="drawer-link">About</a>
+    <a href="#contact" class="drawer-link">Contact</a>
+    <a href="https://secure.anedot.com/broward-leadership-alliance/90d8cfa6-4d5d-4dfe-9a46-b0aeae4d1f7e?utm_source=anedot&utm_medium=qr_code&utm_campaign=browardleadership" target="_blank" rel="noopener noreferrer" class="drawer-donate">Donate</a>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <img class="bg" src="https://images.pexels.com/photos/1098982/pexels-photo-1098982.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="" />
+    <div class="overlay"></div>
+    <div class="content">
+      <h1>Leading Together.<br><span>Shaping Tomorrow.</span></h1>
+      <p>The Broward Leadership Alliance unites civic, business, and community leaders to build a more prosperous and connected Broward County.</p>
+      <div class="btn-row">
+        <a href="#about-us" class="btn btn-outline">Our Mission</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT US -->
+  <section id="about-us">
+    <div class="max-w">
+      <div class="about-us-header">
+        <h2>About Us</h2>
+        <div class="gold-rule"></div>
+        <p>The Broward Leadership Alliance (BLA) is a Political Action Committee (PAC) dedicated to advancing policies and supporting leaders who are committed to Broward County's long-term success. We bring together business leaders, entrepreneurs, community stakeholders, and public officials to strengthen collaboration between the private and public sectors. Through advocacy, civic engagement, and strategic partnerships, BLA works to promote economic growth, improve infrastructure, and encourage more efficient government. Our mission is to help make Broward County a better place to live, work, and invest.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR MISSION STRIPE -->
+  <section id="mission-stripe">
+    <div class="mission-stripe-inner">
+      <div class="divider-star"><span>&#9733;</span></div>
+      <h3>Our Mission</h3>
+      <p>To make Broward a modern and functional county. We challenge the progressive establishment in Broward in favor of competent government and foster a safe environment to grow businesses, create jobs, and improve the quality of life for all residents.</p>
+    </div>
+  </section>
+
+  <!-- WHAT WE DO -->
+  <section id="what-we-do">
+    <div class="what-divider max-w"><h3>What We Do</h3></div>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <div class="pillar-icon">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h4>Build Community</h4>
+        <p>We bring together executives, business leaders, and community stakeholders to collaborate on solutions that move Broward forward.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+        </div>
+        <h4>Find &amp; Highlight Leaders</h4>
+        <p>We identify and support candidates who share our vision for a stronger, safer, and more prosperous Broward County.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        </div>
+        <h4>Drive Impact</h4>
+        <p>Through advocacy, engagement, and strategic action, we promote policies that deliver results and put residents first.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <h4>Champion Competent Government</h4>
+        <p>We advocate for accountable leadership, efficient services, and fiscal responsibility to strengthen our communities.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR GOAL -->
+  <section id="our-goal">
+    <div class="goal-inner">
+      <div class="goal-icon">
+        <svg width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/><line x1="22" y1="12" x2="18" y2="12"/><line x1="6" y1="12" x2="2" y2="12"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/></svg>
+      </div>
+      <div class="goal-divider"></div>
+      <div class="goal-text">
+        <h4>Our Goal</h4>
+        <p>To foster collaboration, share actionable insights, and identify solutions that drive sustainable growth and high-quality development across Broward County.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="max-w" style="text-align:center; max-width:560px;">
+      <div class="section-tag" style="color:var(--gold-light)">Contact Us</div>
+      <h2 style="color:var(--white);">Get in Touch</h2>
+      <p style="color:rgba(255,255,255,.65); line-height:1.8; margin-bottom:28px;">We welcome questions, partnership inquiries, and applications. Reach out and a member of our team will respond promptly.</p>
+      <a href="mailto:info@browardleadership.com" class="contact-email-link" style="display:inline-flex;align-items:center;gap:10px;color:var(--gold-light);font-size:1.1rem;font-weight:600;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--gold-light)'">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        info@browardleadership.com
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    &copy; <span id="yr"></span> Broward Leadership Alliance. All rights reserved.
+  </footer>
+
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    const hamburger = document.getElementById('hamburger');
+    const drawer = document.getElementById('mobileDrawer');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = drawer.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    drawer.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        drawer.classList.remove('open');
+        hamburger.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+  </script>
+
 </body>
 </html>
