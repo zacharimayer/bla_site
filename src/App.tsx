@@ -219,12 +219,6 @@ export default function App() {
           <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
             {/* Anthony Paz */}
             <div className="bg-slate-50 rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
-              <img
-                src="/anthony.jpeg"
-                alt="Anthony Paz"
-                className="w-full object-cover object-top"
-                style={{ height: '420px' }}
-              />
               <div className="p-7">
                 <h3 className="font-playfair text-2xl font-bold text-slate-900 mb-1">Anthony Paz, MA</h3>
                 <p className="text-amber-500 font-semibold text-sm uppercase tracking-wide mb-4">Co-Founder</p>
@@ -238,12 +232,6 @@ export default function App() {
 
             {/* Ari Goldman */}
             <div className="bg-slate-50 rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
-              <img
-                src="/ari.jpeg"
-                alt="Ari Goldman"
-                className="w-full object-cover object-top"
-                style={{ height: '420px' }}
-              />
               <div className="p-7">
                 <h3 className="font-playfair text-2xl font-bold text-slate-900 mb-1">Ari Goldman, MPA</h3>
                 <p className="text-amber-500 font-semibold text-sm uppercase tracking-wide mb-4">Co-Founder</p>
