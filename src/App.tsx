@@ -208,40 +208,14 @@ export default function App() {
             <h2 className="font-playfair text-4xl md:text-5xl font-extrabold text-slate-900 mt-3 mb-4 leading-tight">About Us</h2>
             <div className="w-12 h-1 bg-amber-500 mx-auto rounded-full mb-6" />
             <p className="text-slate-600 text-lg leading-relaxed max-w-2xl mx-auto">
-              The Broward Leadership Alliance (BLA) is a Political Action Committee (PAC) focused on advancing
-              practical solutions that strengthen Broward County. We unite business leaders, entrepreneurs,
-              community stakeholders, and public officials around a shared vision for economic growth and good
-              governance. BLA supports policies and leaders that improve infrastructure, encourage investment,
-              reduce unnecessary bureaucracy, and enhance the quality of life for Broward residents.
+              The Broward Leadership Alliance (BLA) is a Political Action Committee (PAC) dedicated to advancing
+              policies and supporting leaders who are committed to Broward County's long-term success. We bring
+              together business leaders, entrepreneurs, community stakeholders, and public officials to strengthen
+              collaboration between the private and public sectors. Through advocacy, civic engagement, and
+              strategic partnerships, BLA works to promote economic growth, improve infrastructure, and encourage
+              more efficient government. Our mission is to help make Broward County a better place to live, work,
+              and invest.
             </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
-            {/* Anthony Paz */}
-            <div className="bg-slate-50 rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
-              <div className="p-7">
-                <h3 className="font-playfair text-2xl font-bold text-slate-900 mb-1">Anthony Paz, MA</h3>
-                <p className="text-amber-500 font-semibold text-sm uppercase tracking-wide mb-4">Co-Founder</p>
-                <p className="text-slate-600 leading-relaxed text-sm">
-                  A seasoned political operative and community builder with years of experience in campaign
-                  management, economic development, and international diplomacy. Anthony brings deep strategic
-                  expertise and a passion for principled leadership that puts Broward's future first.
-                </p>
-              </div>
-            </div>
-
-            {/* Ari Goldman */}
-            <div className="bg-slate-50 rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
-              <div className="p-7">
-                <h3 className="font-playfair text-2xl font-bold text-slate-900 mb-1">Ari Goldman, MPA</h3>
-                <p className="text-amber-500 font-semibold text-sm uppercase tracking-wide mb-4">Co-Founder</p>
-                <p className="text-slate-600 leading-relaxed text-sm">
-                  A public policy professional and community builder with a strong track record in civic
-                  engagement and smart governance. Ari is committed to building a modern, functional Broward
-                  County through smart policy solutions and a relentless focus on results.
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
