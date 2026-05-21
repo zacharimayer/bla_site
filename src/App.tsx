@@ -208,9 +208,11 @@ export default function App() {
             <h2 className="font-playfair text-4xl md:text-5xl font-extrabold text-slate-900 mt-3 mb-4 leading-tight">About Us</h2>
             <div className="w-12 h-1 bg-amber-500 mx-auto rounded-full mb-6" />
             <p className="text-slate-600 text-lg leading-relaxed max-w-2xl mx-auto">
-              The Broward Leadership Alliance is a community of executives and a Political Committee, led by
-              seasoned political operatives and community builders committed to smart growth, strong
-              infrastructure, and a better quality of life for all who live, work, and invest in Broward County.
+              The Broward Leadership Alliance (BLA) is a Political Action Committee (PAC) focused on advancing
+              practical solutions that strengthen Broward County. We unite business leaders, entrepreneurs,
+              community stakeholders, and public officials around a shared vision for economic growth and good
+              governance. BLA supports policies and leaders that improve infrastructure, encourage investment,
+              reduce unnecessary bureaucracy, and enhance the quality of life for Broward residents.
             </p>
           </div>
 
@@ -218,7 +220,7 @@ export default function App() {
             {/* Anthony Paz */}
             <div className="bg-slate-50 rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
               <img
-                src="/photo_2026-05-16_10.32.46.jpeg"
+                src="/anthony.jpeg"
                 alt="Anthony Paz"
                 className="w-full object-cover object-top"
                 style={{ height: '420px' }}
@@ -237,7 +239,7 @@ export default function App() {
             {/* Ari Goldman */}
             <div className="bg-slate-50 rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
               <img
-                src="/photo_2026-05-16_10.31.43.jpeg"
+                src="/ari.jpeg"
                 alt="Ari Goldman"
                 className="w-full object-cover object-top"
                 style={{ height: '420px' }}
