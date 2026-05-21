@@ -58,7 +58,7 @@
     .nav-brand span { color: var(--gold-light); }
     nav.scrolled .nav-brand span { color: var(--gold); }
 
-    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
     .nav-links a {
       text-decoration: none;
       font-size: 0.875rem;
@@ -81,6 +81,66 @@
     .nav-donate:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
     nav.scrolled .nav-donate { background: var(--gold); color: var(--navy) !important; }
     nav.scrolled .nav-donate:hover { background: var(--gold-light) !important; }
+
+    /* Hamburger */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      z-index: 110;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: background 0.3s, transform 0.3s, opacity 0.3s;
+    }
+    nav.scrolled .nav-hamburger span { background: var(--navy); }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile drawer */
+    .nav-mobile-drawer {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: var(--navy);
+      padding: 80px 32px 40px;
+      z-index: 99;
+      flex-direction: column;
+      gap: 0;
+      box-shadow: 0 8px 32px rgba(0,0,0,.3);
+    }
+    .nav-mobile-drawer.open { display: flex; }
+    .nav-mobile-drawer a {
+      display: block;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: rgba(255,255,255,.85);
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      transition: color 0.2s;
+    }
+    .nav-mobile-drawer a:last-child { border-bottom: none; }
+    .nav-mobile-drawer a:hover { color: var(--gold-light); }
+    .nav-mobile-drawer .drawer-donate {
+      margin-top: 24px;
+      background: var(--gold);
+      color: var(--navy) !important;
+      border-radius: 8px;
+      text-align: center;
+      padding: 14px 20px;
+      font-weight: 700;
+      border-bottom: none !important;
+    }
 
     /* ── HERO ── */
     #hero {
@@ -123,7 +183,7 @@
     }
     h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-size: clamp(2.4rem, 8vw, 4.5rem);
       font-weight: 800;
       color: var(--white);
       line-height: 1.1;
@@ -131,7 +191,7 @@
     }
     h1 span { color: var(--gold-light); }
     #hero p {
-      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-size: clamp(1rem, 3.5vw, 1.2rem);
       color: rgba(255,255,255,.8);
       line-height: 1.7;
       margin-bottom: 36px;
@@ -189,7 +249,7 @@
     }
     h2 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-size: clamp(1.9rem, 5vw, 2.8rem);
       font-weight: 700;
       color: var(--navy);
       line-height: 1.2;
@@ -207,7 +267,7 @@
     #about-us { background: var(--white); padding: 80px 24px; }
     .about-us-header { text-align: center; margin-bottom: 56px; }
     .about-us-header .section-tag { margin-bottom: 8px; }
-    .about-us-header h2 { font-size: clamp(2.2rem, 3.5vw, 3rem); margin-bottom: 12px; }
+    .about-us-header h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 12px; }
     .gold-rule { width: 48px; height: 4px; background: var(--gold); border-radius: 4px; margin: 0 auto 24px; }
     .about-us-header p { color: var(--muted); line-height: 1.8; font-size: 1rem; max-width: 640px; margin: 0 auto; }
     .leaders-grid {
@@ -241,10 +301,6 @@
       margin-bottom: 14px;
     }
     .leader-card-body p { color: var(--muted); font-size: 0.92rem; line-height: 1.75; margin: 0; }
-    @media (max-width: 640px) {
-      .leaders-grid { grid-template-columns: 1fr; }
-      .leader-card img { height: 300px; }
-    }
 
     /* ── OUR MISSION STRIPE ── */
     #mission-stripe {
@@ -277,14 +333,14 @@
     }
     #mission-stripe h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
+      font-size: clamp(1.3rem, 4vw, 1.6rem);
       font-weight: 700;
       color: var(--navy);
       text-transform: uppercase;
       letter-spacing: .06em;
       margin-bottom: 16px;
     }
-    #mission-stripe p { color: var(--muted); line-height: 1.8; font-size: 1.05rem; }
+    #mission-stripe p { color: var(--muted); line-height: 1.8; font-size: clamp(0.95rem, 2.5vw, 1.05rem); }
 
     /* ── WHAT WE DO ── */
     #what-we-do { background: var(--white); padding: 80px 48px; }
@@ -303,7 +359,7 @@
     }
     .what-divider h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
+      font-size: clamp(1.2rem, 3.5vw, 1.6rem);
       font-weight: 700;
       color: var(--navy);
       text-transform: uppercase;
@@ -500,28 +556,79 @@
       color: rgba(255,255,255,.35);
     }
 
-    /* ── RESPONSIVE ── */
+    /* ── RESPONSIVE: TABLET (≤900px) ── */
     @media (max-width: 900px) {
       nav { padding: 16px 24px; }
       nav.scrolled { padding: 12px 24px; }
       .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+
       section { padding: 64px 24px; }
-      #stats { grid-template-columns: repeat(2, 1fr); padding: 40px 24px; }
+      #about-us { padding: 64px 20px; }
+      #stats {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 40px 24px;
+        gap: 32px;
+      }
+      .stat-num { font-size: 2rem; }
       .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
       .about-img { height: 280px; }
       .programs-grid { grid-template-columns: 1fr; }
       .about-us-grid { grid-template-columns: 1fr; }
       .about-us-photo { min-height: 380px; }
       .about-us-text { padding: 56px 24px; }
-      .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+      .pillars-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
       #what-we-do { padding: 64px 24px; }
       #mission-stripe { padding: 48px 24px; }
       #our-goal { padding: 32px 24px; }
       .goal-inner { flex-direction: column; text-align: center; }
       .goal-divider { width: 80px; height: 1px; }
+      .leaders-grid { grid-template-columns: 1fr; max-width: 480px; }
+      .leader-card img { height: 340px; }
     }
+
+    /* ── RESPONSIVE: MOBILE (≤560px) ── */
     @media (max-width: 560px) {
-      .pillars-grid { grid-template-columns: 1fr; }
+      nav { padding: 14px 20px; }
+      nav.scrolled { padding: 10px 20px; }
+
+      #hero .content { padding: 0 20px; }
+      #hero p { font-size: 1rem; margin-bottom: 28px; }
+      .btn { padding: 13px 28px; font-size: 0.9rem; }
+
+      #stats {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 32px 20px;
+        gap: 24px;
+      }
+      .stat-num { font-size: 1.8rem; }
+      .stat-label { font-size: 0.72rem; }
+
+      section { padding: 52px 20px; }
+      #about-us { padding: 52px 16px; }
+      .about-us-header { margin-bottom: 36px; }
+      .about-us-header p { font-size: 0.95rem; }
+
+      .leaders-grid { gap: 28px; max-width: 100%; }
+      .leader-card img { height: 280px; }
+      .leader-card-body { padding: 20px 20px 24px; }
+      .leader-card-body h3 { font-size: 1.2rem; margin-bottom: 10px; }
+      .leader-card-body p { font-size: 0.875rem; }
+
+      #mission-stripe { padding: 40px 20px; }
+      #what-we-do { padding: 52px 20px; }
+      .what-divider { margin-bottom: 36px; gap: 12px; }
+      .pillars-grid { grid-template-columns: 1fr; gap: 24px; }
+      .pillar-icon { width: 56px; height: 56px; }
+
+      #our-goal { padding: 28px 20px; }
+      .goal-icon { width: 52px; height: 52px; }
+      .goal-text p { font-size: 0.95rem; }
+
+      #contact { padding: 52px 20px; }
+      .contact-email-link { font-size: 0.95rem !important; }
+
+      footer { padding: 16px 20px; font-size: 0.75rem; }
     }
   </style>
 </head>
@@ -535,7 +642,17 @@
       <li><a href="#contact">Contact</a></li>
       <li><a href="https://secure.anedot.com/broward-leadership-alliance/90d8cfa6-4d5d-4dfe-9a46-b0aeae4d1f7e?utm_source=anedot&utm_medium=qr_code&utm_campaign=browardleadership" target="_blank" rel="noopener noreferrer" class="nav-donate">Donate</a></li>
     </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+
+  <!-- MOBILE DRAWER -->
+  <div class="nav-mobile-drawer" id="mobileDrawer">
+    <a href="#about" class="drawer-link">About</a>
+    <a href="#contact" class="drawer-link">Contact</a>
+    <a href="https://secure.anedot.com/broward-leadership-alliance/90d8cfa6-4d5d-4dfe-9a46-b0aeae4d1f7e?utm_source=anedot&utm_medium=qr_code&utm_campaign=browardleadership" target="_blank" rel="noopener noreferrer" class="drawer-donate">Donate</a>
+  </div>
 
   <!-- HERO -->
   <section id="hero">
@@ -643,7 +760,7 @@
       <div class="section-tag" style="color:var(--gold-light)">Contact Us</div>
       <h2 style="color:var(--white);">Get in Touch</h2>
       <p style="color:rgba(255,255,255,.65); line-height:1.8; margin-bottom:28px;">We welcome questions, partnership inquiries, and applications. Reach out and a member of our team will respond promptly.</p>
-      <a href="mailto:info@browardleadership.com" style="display:inline-flex;align-items:center;gap:10px;color:var(--gold-light);font-size:1.1rem;font-weight:600;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--gold-light)'">
+      <a href="mailto:info@browardleadership.com" class="contact-email-link" style="display:inline-flex;align-items:center;gap:10px;color:var(--gold-light);font-size:1.1rem;font-weight:600;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--gold-light)'">
         <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         info@browardleadership.com
       </a>
@@ -661,6 +778,23 @@
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    const hamburger = document.getElementById('hamburger');
+    const drawer = document.getElementById('mobileDrawer');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = drawer.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    drawer.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        drawer.classList.remove('open');
+        hamburger.classList.remove('open');
+        document.body.style.overflow = '';
+      });
     });
   </script>
 
