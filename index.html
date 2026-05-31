@@ -282,22 +282,31 @@
     .leader-card {
       background: #f8fafc;
       border-radius: 20px;
-      padding: 32px;
+      overflow: hidden;
       box-shadow: 0 4px 24px rgba(0,0,0,.07);
       transition: box-shadow .25s, transform .25s;
     }
     .leader-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,.13); transform: translateY(-4px); }
-    .leader-card h3 {
+    .leader-card img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .leader-card-body { padding: 28px 28px 32px; }
+    .leader-card-body h3 {
       font-family: 'Playfair Display', serif;
       font-size: 1.4rem;
       font-weight: 700;
       color: var(--navy);
       margin-bottom: 14px;
     }
-    .leader-card p { color: var(--muted); font-size: 0.92rem; line-height: 1.75; margin: 0; }
+    .leader-card-body p { color: var(--muted); font-size: 0.92rem; line-height: 1.75; margin: 0; }
 
     @media (max-width: 900px) {
       .leaders-grid { grid-template-columns: 1fr; max-width: 480px; }
+      .leader-card img { height: 340px; }
     }
 
     /* ── OUR MISSION STRIPE ── */
@@ -557,12 +566,18 @@
       </div>
       <div class="leaders-grid">
         <div class="leader-card">
-          <h3>Anthony Paz, MA</h3>
-          <p>Anthony Paz is the Founder of AXIOS Strategies. He has served on multiple county, state, and federal campaigns under official capacities as a Field Director, Senior Advisor, and Campaign Manager; leading efforts in compliance, targeted voter outreach, fundraising, and full-scale field operations. Anthony is a graduate of the Leadership Institute's Campaign Management and Fundraising School in Washington, D.C. He holds a Master's degree in Theology with a minor in Political Science from Florida International University, with a specialization in Asian and Latin American relations.</p>
+          <img src="/anthony.jpeg" alt="Anthony Paz" />
+          <div class="leader-card-body">
+            <h3>Anthony Paz, MA</h3>
+            <p>Anthony Paz is the Founder of AXIOS Strategies. He has served on multiple county, state, and federal campaigns under official capacities as a Field Director, Senior Advisor, and Campaign Manager; leading efforts in compliance, targeted voter outreach, fundraising, and full-scale field operations. Anthony is a graduate of the Leadership Institute's Campaign Management and Fundraising School in Washington, D.C. He holds a Master's degree in Theology with a minor in Political Science from Florida International University, with a specialization in Asian and Latin American relations.</p>
+          </div>
         </div>
         <div class="leader-card">
-          <h3>Ari Goldman, MPA</h3>
-          <p>With over a decade of experience in consulting, Ari's expertise is based in research, analysis and strategy. He has worked with dozens of clients on everything from local political campaigns to international diplomacy. He believes that success cannot be accomplished without clear step by step game plans. Serious clients deserve serious consultants.</p>
+          <img src="/ari.jpeg" alt="Ari Goldman" />
+          <div class="leader-card-body">
+            <h3>Ari Goldman, MPA</h3>
+            <p>With over a decade of experience in consulting, Ari's expertise is based in research, analysis and strategy. He has worked with dozens of clients on everything from local political campaigns to international diplomacy. He believes that success cannot be accomplished without clear step by step game plans. Serious clients deserve serious consultants.</p>
+          </div>
         </div>
       </div>
     </div>
