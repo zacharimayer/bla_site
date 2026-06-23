@@ -15,12 +15,15 @@ import {
   Megaphone,
   Target,
   Search,
+  CheckCircle2,
+  BadgeDollarSign,
 } from 'lucide-react';
 
 const NAV_LINKS = [
   { label: 'Mission', href: '#mission' },
   { label: 'About', href: '#about' },
   { label: 'Leadership', href: '#leadership' },
+  { label: 'Membership', href: '#membership' },
   { label: 'Get Involved', href: '#involved' },
   { label: 'Contact', href: '#footer' },
 ];
@@ -59,6 +62,59 @@ const BOARD = [
   { name: 'James Okonkwo', title: 'Treasurer', org: 'Deloitte South Florida' },
   { name: 'Patricia Holloway', title: 'Director', org: 'Broward County Public Schools' },
   { name: 'David Nguyen', title: 'Director', org: 'AutoNation' },
+  { name: 'Anthony Paz', title: 'Chief Operating Officer', org: '' },
+  { name: 'Ari Goldman', title: 'Chief Strategy Officer', org: '' },
+];
+
+const MEMBERSHIP_TIERS = [
+  {
+    level: 'Executive Committee',
+    price: '$25,000',
+    benefits: [
+      'Involved in guidance of the organization',
+      'Help vet candidates for support',
+      'Part of the strategy team',
+      'Access to all events',
+      'Prominently featured in organizational materials',
+      'Help identify private sector priorities',
+      'Direct lobbying efforts on county & municipal issues',
+      'Recognition in monthly newsletter',
+      'Priority access to Alliance leadership & special briefings',
+    ],
+  },
+  {
+    level: 'Corporate',
+    price: '$10,000',
+    benefits: [
+      'Support the Alliance mission',
+      'Admission to Alliance events',
+      'Recognition on select organizational materials',
+      'Acknowledgment in monthly newsletter',
+      'Input on key issues affecting the business community',
+      'Periodic member briefings & networking opportunities',
+    ],
+  },
+  {
+    level: 'Small Business',
+    price: '$5,000',
+    benefits: [
+      'Demonstrate commitment to better government',
+      'Admission to Alliance events',
+      'Recognition on the Alliance website',
+      'Recognition on selected event materials',
+      'Inclusion in member listings distributed to attendees & supporters',
+    ],
+  },
+  {
+    level: 'Individual',
+    price: '$2,500',
+    benefits: [
+      'Support the Alliance mission',
+      'Invitations to Alliance events',
+      'Periodic organizational updates',
+      'Recognition as an individual member of the Alliance',
+    ],
+  },
 ];
 
 const STATS = [
@@ -325,7 +381,7 @@ export default function App() {
                 </div>
                 <h3 className="font-semibold text-slate-900 text-lg">{m.name}</h3>
                 <p className="text-amber-500 text-sm font-medium mt-0.5">{m.title}</p>
-                <p className="text-slate-500 text-sm mt-1">{m.org}</p>
+                {m.org && <p className="text-slate-500 text-sm mt-1">{m.org}</p>}
               </div>
             ))}
           </div>
@@ -361,6 +417,78 @@ export default function App() {
                 <c.icon size={28} className="text-amber-400 mb-3 mx-auto" />
                 <h3 className="text-white font-semibold mb-1">{c.label}</h3>
                 <p className="text-sky-300 text-sm">{c.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── MEMBERSHIP ── */}
+      <section id="membership" className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <span className="text-amber-500 font-semibold text-sm uppercase tracking-widest">Join the Alliance</span>
+            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-slate-900 mt-3 leading-tight">
+              Membership Opportunities
+            </h2>
+            <div className="w-12 h-1 bg-amber-500 mx-auto rounded-full mt-5" />
+            <p className="mt-6 text-slate-500 text-lg leading-relaxed">
+              Invest in Broward County's future. Choose the membership level that aligns with your commitment
+              to better government and a stronger local economy.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-6">
+            {MEMBERSHIP_TIERS.map((tier, idx) => (
+              <div
+                key={tier.level}
+                className={`relative rounded-2xl border flex flex-col overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1 ${
+                  idx === 0
+                    ? 'border-amber-400 bg-sky-950 text-white'
+                    : 'border-slate-200 bg-white text-slate-800'
+                }`}
+              >
+                {idx === 0 && (
+                  <div className="bg-amber-500 text-white text-xs font-bold uppercase tracking-widest text-center py-2">
+                    Most Exclusive
+                  </div>
+                )}
+                <div className="p-7 flex flex-col flex-1">
+                  <div className={`w-12 h-12 rounded-full flex items-center justify-center mb-4 ${
+                    idx === 0 ? 'bg-amber-500/20' : 'bg-sky-50'
+                  }`}>
+                    <BadgeDollarSign size={24} className={idx === 0 ? 'text-amber-400' : 'text-sky-700'} />
+                  </div>
+                  <h3 className={`font-playfair text-xl font-bold mb-1 ${idx === 0 ? 'text-white' : 'text-slate-900'}`}>
+                    {tier.level}
+                  </h3>
+                  <p className={`text-3xl font-extrabold mb-1 ${idx === 0 ? 'text-amber-400' : 'text-sky-800'}`}>
+                    {tier.price}
+                  </p>
+                  <p className={`text-xs font-medium uppercase tracking-wide mb-6 ${idx === 0 ? 'text-sky-400' : 'text-slate-400'}`}>
+                    Annual Membership
+                  </p>
+
+                  <ul className="space-y-3 flex-1">
+                    {tier.benefits.map((b) => (
+                      <li key={b} className="flex items-start gap-2.5">
+                        <CheckCircle2 size={16} className={`shrink-0 mt-0.5 ${idx === 0 ? 'text-amber-400' : 'text-sky-600'}`} />
+                        <span className={`text-sm leading-snug ${idx === 0 ? 'text-sky-200' : 'text-slate-600'}`}>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <a
+                    href="mailto:info@browardleadership.com"
+                    className={`mt-8 block text-center text-sm font-semibold py-3 px-5 rounded-full transition-colors ${
+                      idx === 0
+                        ? 'bg-amber-500 hover:bg-amber-400 text-white'
+                        : 'border border-sky-700 text-sky-700 hover:bg-sky-700 hover:text-white'
+                    }`}
+                  >
+                    Join Now
+                  </a>
+                </div>
               </div>
             ))}
           </div>
