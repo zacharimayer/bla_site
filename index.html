@@ -439,6 +439,132 @@
     }
     .goal-text p { color: rgba(255,255,255,.85); line-height: 1.7; font-size: 1rem; }
 
+    /* ── MEMBERSHIP ── */
+    #membership { background: var(--white); padding: 88px 48px; }
+    .membership-header { text-align: center; max-width: 640px; margin: 0 auto 56px; }
+    .membership-header .section-tag { display: block; margin-bottom: 10px; }
+    .membership-header h2 { margin-bottom: 0; }
+    .membership-rule { width: 48px; height: 4px; background: var(--gold); border-radius: 4px; margin: 16px auto 20px; }
+    .membership-header p { color: var(--muted); line-height: 1.7; font-size: 1rem; }
+
+    .membership-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .tier-card {
+      border-radius: 20px;
+      border: 1px solid #e5e7eb;
+      background: var(--white);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: box-shadow .25s, transform .25s;
+    }
+    .tier-card:hover { box-shadow: 0 16px 48px rgba(0,0,0,.12); transform: translateY(-4px); }
+    .tier-card.tier-featured {
+      border-color: var(--gold);
+      background: var(--navy);
+    }
+    .tier-badge {
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 7px 0;
+    }
+    .tier-body { padding: 28px 24px 32px; flex: 1; display: flex; flex-direction: column; }
+    .tier-icon {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
+      background: #f1f5f9;
+    }
+    .tier-featured .tier-icon { background: rgba(201,147,42,.18); }
+    .tier-icon svg { color: var(--sky); }
+    .tier-featured .tier-icon svg { color: var(--gold-light); }
+    .tier-level {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .tier-featured .tier-level { color: var(--white); }
+    .tier-price {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--sky);
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+    .tier-featured .tier-price { color: var(--gold-light); }
+    .tier-period {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    .tier-featured .tier-period { color: rgba(255,255,255,.45); }
+    .tier-benefits { list-style: none; flex: 1; display: flex; flex-direction: column; gap: 10px; margin: 0 0 24px; padding: 0; }
+    .tier-benefits li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .tier-featured .tier-benefits li { color: rgba(255,255,255,.7); }
+    .tier-benefits li::before {
+      content: '';
+      width: 14px;
+      height: 14px;
+      min-width: 14px;
+      margin-top: 1px;
+      border-radius: 50%;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a6fa8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 11.08V12a10 10 0 1 1-5.93-9.14'/%3E%3Cpolyline points='22 4 12 14.01 9 11.01'/%3E%3C/svg%3E") center/contain no-repeat;
+    }
+    .tier-featured .tier-benefits li::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e8b04b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 11.08V12a10 10 0 1 1-5.93-9.14'/%3E%3Cpolyline points='22 4 12 14.01 9 11.01'/%3E%3C/svg%3E");
+    }
+    .tier-cta {
+      display: block;
+      text-align: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 11px 20px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: all .2s;
+      border: 2px solid var(--sky);
+      color: var(--sky);
+      background: transparent;
+    }
+    .tier-cta:hover { background: var(--sky); color: var(--white); }
+    .tier-featured .tier-cta {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--navy);
+    }
+    .tier-featured .tier-cta:hover { background: var(--gold-light); border-color: var(--gold-light); }
+
+    @media (max-width: 1000px) {
+      .membership-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 560px) {
+      #membership { padding: 60px 20px; }
+      .membership-grid { grid-template-columns: 1fr; }
+    }
+
     /* ── CONTACT ── */
     #contact { background: var(--navy); }
     .contact-grid {
@@ -645,6 +771,7 @@
     <a href="#hero" class="nav-brand">Broward<br><span>Leadership Alliance</span></a>
     <ul class="nav-links">
       <li><a href="#about-us">About</a></li>
+      <li><a href="#membership">Membership</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="https://secure.anedot.com/broward-leadership-alliance/90d8cfa6-4d5d-4dfe-9a46-b0aeae4d1f7e?utm_source=anedot&utm_medium=qr_code&utm_campaign=browardleadership" target="_blank" rel="noopener noreferrer" class="nav-donate">Donate</a></li>
     </ul>
@@ -656,6 +783,7 @@
   <!-- MOBILE DRAWER -->
   <div class="nav-mobile-drawer" id="mobileDrawer">
     <a href="#about-us" class="drawer-link">About</a>
+    <a href="#membership" class="drawer-link">Membership</a>
     <a href="#contact" class="drawer-link">Contact</a>
     <a href="https://secure.anedot.com/broward-leadership-alliance/90d8cfa6-4d5d-4dfe-9a46-b0aeae4d1f7e?utm_source=anedot&utm_medium=qr_code&utm_campaign=browardleadership" target="_blank" rel="noopener noreferrer" class="drawer-donate">Donate</a>
   </div>
@@ -685,12 +813,14 @@
         <div class="leader-card">
           <div class="leader-card-body">
             <h3>Anthony Paz, MA</h3>
+            <p style="color:var(--gold);font-size:0.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px;">Chief Operating Officer</p>
             <p>Anthony Paz is the Founder of AXIOS Strategies. He has served on multiple county, state, and federal campaigns under official capacities as a Field Director, Senior Advisor, and Campaign Manager; leading efforts in compliance, targeted voter outreach, fundraising, and full-scale field operations. Anthony is a graduate of the Leadership Institute's Campaign Management and Fundraising School in Washington, D.C. He holds a Master's degree in Theology with a minor in Political Science from Florida International University, with a specialization in Asian and Latin American relations.</p>
           </div>
         </div>
         <div class="leader-card">
           <div class="leader-card-body">
             <h3>Ari Goldman, MPA</h3>
+            <p style="color:var(--gold);font-size:0.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px;">Chief Strategy Officer</p>
             <p>With over a decade of experience in consulting, Ari's expertise is based in research, analysis and strategy. He has worked with dozens of clients on everything from local political campaigns to international diplomacy. He believes that success cannot be accomplished without clear step by step game plans. Serious clients deserve serious consultants.</p>
           </div>
         </div>
@@ -753,6 +883,103 @@
         <h4>Our Goal</h4>
         <p>To foster collaboration, share actionable insights, and identify solutions that drive sustainable growth and high-quality development across Broward County.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- MEMBERSHIP -->
+  <section id="membership">
+    <div class="membership-header">
+      <span class="section-tag">Join the Alliance</span>
+      <h2>Membership Opportunities</h2>
+      <div class="membership-rule"></div>
+      <p>Invest in Broward County's future. Choose the membership level that aligns with your commitment to better government and a stronger local economy.</p>
+    </div>
+    <div class="membership-grid">
+
+      <!-- Executive Committee -->
+      <div class="tier-card tier-featured">
+        <div class="tier-badge">Most Exclusive</div>
+        <div class="tier-body">
+          <div class="tier-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/><path d="M17 11l1.5 1.5L21 10"/></svg>
+          </div>
+          <div class="tier-level">Executive Committee</div>
+          <div class="tier-price">$25,000</div>
+          <div class="tier-period">Annual Membership</div>
+          <ul class="tier-benefits">
+            <li>Guidance of the organization &amp; strategy team</li>
+            <li>Help vet candidates for support</li>
+            <li>Access to all Alliance events</li>
+            <li>Prominently featured in organizational materials</li>
+            <li>Identify priorities of Broward's private sector</li>
+            <li>Direct lobbying on county &amp; municipal issues</li>
+            <li>Recognition in monthly newsletter</li>
+            <li>Priority access to Alliance leadership &amp; special briefings</li>
+          </ul>
+          <a href="mailto:info@browardleadership.com" class="tier-cta">Join Now</a>
+        </div>
+      </div>
+
+      <!-- Corporate -->
+      <div class="tier-card">
+        <div class="tier-body">
+          <div class="tier-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          </div>
+          <div class="tier-level">Corporate</div>
+          <div class="tier-price">$10,000</div>
+          <div class="tier-period">Annual Membership</div>
+          <ul class="tier-benefits">
+            <li>Support the Alliance mission</li>
+            <li>Admission to all Alliance events</li>
+            <li>Recognition on select organizational materials</li>
+            <li>Acknowledgment in monthly newsletter</li>
+            <li>Input on key business community issues</li>
+            <li>Periodic member briefings &amp; networking</li>
+          </ul>
+          <a href="mailto:info@browardleadership.com" class="tier-cta">Join Now</a>
+        </div>
+      </div>
+
+      <!-- Small Business -->
+      <div class="tier-card">
+        <div class="tier-body">
+          <div class="tier-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div class="tier-level">Small Business</div>
+          <div class="tier-price">$5,000</div>
+          <div class="tier-period">Annual Membership</div>
+          <ul class="tier-benefits">
+            <li>Demonstrate commitment to better government</li>
+            <li>Admission to Alliance events</li>
+            <li>Recognition on the Alliance website</li>
+            <li>Recognition on selected event materials</li>
+            <li>Inclusion in member listings for attendees &amp; supporters</li>
+          </ul>
+          <a href="mailto:info@browardleadership.com" class="tier-cta">Join Now</a>
+        </div>
+      </div>
+
+      <!-- Individual -->
+      <div class="tier-card">
+        <div class="tier-body">
+          <div class="tier-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div class="tier-level">Individual</div>
+          <div class="tier-price">$2,500</div>
+          <div class="tier-period">Annual Membership</div>
+          <ul class="tier-benefits">
+            <li>Support the Alliance's mission &amp; public policy work</li>
+            <li>Invitations to Alliance events</li>
+            <li>Periodic organizational updates</li>
+            <li>Recognition as an individual member</li>
+          </ul>
+          <a href="mailto:info@browardleadership.com" class="tier-cta">Join Now</a>
+        </div>
+      </div>
+
     </div>
   </section>
 
